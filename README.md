@@ -15,7 +15,7 @@ r/TurkeyJerky<br/>
 
 **Örnek kullanım ve cevap:**
 
-![example](bot_example.PNG)
+![example](bot_ornek.png)
 
 # Önemli Notlar
 
