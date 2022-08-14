@@ -1,29 +1,26 @@
-# Fact-checking bot
-This bot is currently offline.
+# Reddit Doğruluk Kontrol Botu
 
-A reddit bot that utilizes the google [fact check tools API](https://developers.google.com/fact-check/tools/api/) to retrieve claim analysis related to an arbitrary, user-provided query. The bot will (attempt to) nicely present the most relevant claims, including the source and the source's verdict. This bot is meant to provide an efficient way to broadcast truth in response to a questionable comment. The user that calls the bot must provide the necessary keywords to find the claim if it exists - see usage below. 
+Kullanıcı tarafından sağlanan rastgele bir sorguyla ilgili talep analizini almak için [Google Doğruluk Kontrol Araçları API](https://developers.google.com/fact-check/tools/api/)'sini kullanan bir reddit botu. Bot, kaynak ve kaynağın değerlendirmesi de dahil olmak üzere en alakalı iddiaları güzel bir şekilde sunacaktır (en azından deneyecektir). Bu bot, şüpheli bir yoruma yanıt olarak gerçeği yayınlamak amacıyla etkili bir yol sağlamak içindir. Botu çağıran kullanıcı, iddiayı bulmak için gerekli anahtar kelimeleri sağlamalıdır - aşağıdaki kullanıma bakın.
 
-# Usage
-**This bot is currently decommissioned.** When it was active, it monitored this list of subreddits:
+# Kullanım
+Bot şu anda aşağıdaki subredditleri izlemektedir.
 
-r/politics<br/>
-r/news<br/>
-r/worldnews<br/>
-r/Liberal<br />
-r/Conservative<br/>
-r/Libertarian<br/>
+r/Turkey<br/>
+r/TurkeyDogrulama<br/>
+r/TarihTarih<br/>
+r/TarihiSeyler<br/>
 
-Comments with the syntax `!factcheck <query>`, where \<query> is a string of search terms, were used to search for relevant fact-checks. Thus, the more concise and relevant your comment, the more likely you were to receive a good result.
+İçerisinde `!dogrumu <sorgu>` bulunduran mesajlar, *\<sorgu> aramada kullanılacak kelime ve/ya kelime dizisidir*, doğruluk kontrolü ile alakalı sonuçları aramak için kullanılır. Bu nedenle, yorumunuz ne kadar özlü ve alakalı olursa, iyi bir sonuç alma olasılığınız o kadar yüksek olur.
 
-Example usage and response:
+**Örnek kullanım ve cevap:**
 
 ![example](bot_example.PNG)
 
-# Important Notes
+# Önemli Notlar
 
-Google's claim search is not perfect, and relies on claims sources have provided to it, as well as the wording the user provides. The bot will thus not always return the most relevant results, or put them first on the list. <br/><br />I **do not control** the sources that the bot provides, which is why the bot links them. If you doubt a fact check, clink the link and decide for yourself. 
+Google'ın iddia kontrol araması mükemmel değildir, kaynakların kendisine sağladığı iddialara ve kullanıcının sağladığı ifadelere dayanır. Bot bu nedenle her zaman en alakalı sonuçları döndürmez veya bunları listede ilk sıraya koymaz.
 
-For a good overall review of the integrity of fact checkers, consult: https://www.realclearpolitics.com/fact_check_review/
-  
-# Feedback/Contributing
-Feel free to open issues or pull requests under the relevant tabs.
+**Botun sağladığı kaynakları kontrol etmiyorum**, bot da bu amaca hizmet edip linkliyor. Doğruluk kontrolünden şüpheniz varsa, bağlantıyı tıklayın ve kendiniz karar verin.
+
+# Geribildirim/Katkıda Bulunma
+Feel free to open issues or pull requests under the relevant tabs to this fork or main repository.
