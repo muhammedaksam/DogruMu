@@ -1,7 +1,8 @@
-Flask==1.0.2
-google-api-python-client==1.7.11
-google-auth==1.6.3
-google-auth-httplib2==0.0.3
-httplib2==0.13.1
-praw==6.4.0
-prawcore==1.0.1
+Flask
+google-api-python-client
+google-auth
+google-auth-httplib2
+httplib2
+praw
+prawcore
+dotenv

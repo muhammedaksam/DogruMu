@@ -1,34 +1,36 @@
 import json
 import praw
-from os import environ
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 import os
+from dotenv import load_dotenv
 
-api_key = os.environ['API_KEY']
-client_id = os.environ['REDDIT_CLIENT_ID']
-secret = os.environ['REDDIT_SECRET']
-password = os.environ['REDDIT_PW']
-username = os.environ['BOT_USERNAME']
+load_dotenv()
 
-reddit = praw.Reddit(client_id=client_id,
-                     client_secret=secret,
-                     password=password,
-                     user_agent='Fact-Check-Bot v 1.0.0 by /u/alecm33',
-                     username=username)
+api_key = os.getenv('API_KEY')
+client_idENV = os.getenv('REDDIT_CLIENT_ID')
+secretENV = os.getenv('REDDIT_SECRET')
+passwordENV = os.getenv('REDDIT_PW')
+usernameENV = os.getenv('BOT_USERNAME')
+
+reddit = praw.Reddit(client_id=client_idENV,
+                     client_secret=secretENV,
+                     password=passwordENV,
+                     user_agent='DogruMu - Dogruluk Kontrol Botu v 1.0.0 by u/XanelaOw',
+                     username=usernameENV)
 
 MAX_CLAIMS = 3
-EMPTY_QUERY_ERROR = "You did not provide a query from which to filter claims!\n\n"
-MONITORED_SUBS = "politics+testingground4bots+botwatch+news+worldnews+worldpolitics+Liberal+Conservative"
-API_ERROR = "There was an issue with fetching claims for your query. :( You could try again another time."
-replyHeader = "Attempting to curate up to 3 relevant fact-checked claims based on your query. On mobile, scroll the table to the side:\n\n"
-replyFooter = "\n\n_I am a bot utilizing Google's fact check exploration tool. I currently monitor r/politics, r/news, r/worldnews, r/Liberal, and r/Libertarian. I'm banned in: r/Conservative_ \n\n^[Code/Documentation](https://github.com/AlecM33/fact-check-bot)"
+EMPTY_QUERY_ERROR = "İddiaların filtreleneceği bir sorgu sağlamadınız!\n\n"
+MONITORED_SUBS = "Turkey+TurkeyDogrulama+TarihTarih+TarihiSeyler+TurkeyJerky"
+API_ERROR = "Sorgunuza dayalı olan iddialar alınırken bir hata oluştu. :( Lütfen daha sonra tekrar deneyin."
+replyHeader = "Sorgunuza dayalı olarak doğrulanmış 3 adede kadar ilgili iddiayı iletiyorum. Mobilde, tabloyu yana kaydırın:\n\n"
+replyFooter = "\n\n_Google'ın [Doğruluk Kontrolü](https://developers.google.com/search/docs/advanced/structured-data/factcheck) araştırma aracını kullanan bir botum. Şu anda r/Turkey,  r/TurkeyDogrulama, r/TarihTarih, r/TarihiSeyler, r/TurkeyJerky subredditlerini izliyorum.  \n\n^[Kod/Dökümantasyon](https://github.com/muhammedaksam/DogruMu)"
 
 def main():
     # monitor comment streams for relevant subreddits
     for comment in reddit.subreddit(MONITORED_SUBS).stream.comments(skip_existing=True):
-        if comment.body.lower().find("!factcheck") != -1:
-            userQuery = comment.body.lower().split("!factcheck")[1].strip(" ")
+        if comment.body.lower().find("!dogrumu") != -1:
+            userQuery = comment.body.lower().split("!dogrumu")[1].strip(" ")
             if (len(userQuery) == 0):
                 try:
                     comment.reply(EMPTY_QUERY_ERROR + replyFooter)
@@ -78,14 +80,14 @@ def buildTableRow(claim):
 # build bot comment based on response from fact check API
 def buildMessage(res):
     if "claims" in res.keys() and len(res["claims"]) > 0:
-        reply = replyHeader + "| Claim | Rating | Source |\n|:-|:-|:-|\n"
+        reply = replyHeader + "| İddia | Değerlendirme | Kaynak |\n|:-|:-|:-|\n"
         for x in range(MAX_CLAIMS):
             if x == len(res["claims"]):
                 break
             reply += buildTableRow(res["claims"][x])
         return reply + replyFooter
     else:
-        return "I was unable to find a notable claim related to your query! Try revising your search." + replyFooter
+        return "Sorgunuzla ilgili kayda değer bir iddia bulamadım! Aramanızı gözden geçirmeyi deneyin." + replyFooter
 
 if __name__ == "__main__":
     main()
