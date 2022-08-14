@@ -1,23 +1,21 @@
 import json
 import praw
+from os import environ
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 import os
-from dotenv import load_dotenv
 
-load_dotenv()
+api_key = os.environ['API_KEY']
+client_id = os.environ['REDDIT_CLIENT_ID']
+secret = os.environ['REDDIT_SECRET']
+password = os.environ['REDDIT_PW']
+username = os.environ['BOT_USERNAME']
 
-api_key = os.getenv('API_KEY')
-client_idENV = os.getenv('REDDIT_CLIENT_ID')
-secretENV = os.getenv('REDDIT_SECRET')
-passwordENV = os.getenv('REDDIT_PW')
-usernameENV = os.getenv('BOT_USERNAME')
-
-reddit = praw.Reddit(client_id=client_idENV,
-                     client_secret=secretENV,
-                     password=passwordENV,
+reddit = praw.Reddit(client_id=client_id,
+                     client_secret=secret,
+                     password=password,
                      user_agent='DogruMu - Dogruluk Kontrol Botu v 1.0.0 by u/XanelaOw',
-                     username=usernameENV)
+                     username=username)
 
 MAX_CLAIMS = 3
 EMPTY_QUERY_ERROR = "İddiaların filtreleneceği bir sorgu sağlamadınız!\n\n"
