@@ -21,7 +21,7 @@ MAX_CLAIMS = 3
 EMPTY_QUERY_ERROR = "İddiaların filtreleneceği bir sorgu sağlamadınız!\n\n"
 MONITORED_SUBS = "Turkey+TurkeyDogrulama+TarihTarih+TarihiSeyler+TurkeyJerky+trpolitics"
 API_ERROR = "Sorgunuza dayalı olan iddialar alınırken bir hata oluştu. :( Lütfen daha sonra tekrar deneyin."
-replyHeader = "Sorgunuza dayalı olarak doğrulanmış 3 adede kadar ilgili iddiayı iletiyorum. Mobilde, tabloyu yana kaydırın:\n\n"
+replyHeader = "Sorgunuza dayalı olarak doğrulanmış 3 adete kadar ilgili iddiayı iletiyorum. Mobilde, tabloyu yana kaydırın:\n\n"
 replyFooter = "\n\n_Google'ın [Doğruluk Kontrolü](https://developers.google.com/search/docs/advanced/structured-data/factcheck) araştırma aracını kullanan bir botum. Şu anda r/Turkey,  r/TurkeyDogrulama, r/TarihTarih, r/TarihiSeyler, r/TurkeyJerky, r/trpolitics subredditlerini izliyorum.  \n\n^[Kod/Dökümantasyon](https://github.com/muhammedaksam/DogruMu)"
 
 def main():
