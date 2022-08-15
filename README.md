@@ -10,6 +10,7 @@ r/TurkeyDogrulama<br/>
 r/TarihTarih<br/>
 r/TarihiSeyler<br/>
 r/TurkeyJerky<br/>
+r/trpolitics<br/>
 
 İçerisinde `!dogrumu <sorgu>` bulunduran mesajlar, *\<sorgu> aramada kullanılacak kelime ve/ya kelime dizisidir*, doğruluk kontrolü ile alakalı sonuçları aramak için kullanılır. Bu nedenle, yorumunuz ne kadar özlü ve alakalı olursa, iyi bir sonuç alma olasılığınız o kadar yüksek olur.
 
