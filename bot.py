@@ -31,7 +31,7 @@ def main():
             userQuery = comment.body.lower().split("!dogrumu")[1].strip(" ")
             if (len(userQuery) == 0):
                 try:
-                    comment.reply(EMPTY_QUERY_ERROR + replyFooter)
+                    comment.reply(body = EMPTY_QUERY_ERROR + replyFooter)
                 except praw.exceptions.APIException as e:
                     print(e)
                     continue
@@ -45,14 +45,14 @@ def main():
                 except HttpError as err:
                     print (err)
                     try:
-                        comment.reply(API_ERROR + replyFooter)
+                        comment.reply(body = API_ERROR + replyFooter)
                     except praw.exceptions.APIException as e:
                         print(e)
                         continue
                 else:
                     reply = buildMessage(response)
                     try:
-                        comment.reply(reply)
+                        comment.reply(body = reply)
                     except praw.exceptions.APIException as e:
                         print (e)
                         print ("Possibly rate limited!")
